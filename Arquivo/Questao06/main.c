@@ -5,12 +5,12 @@ encontram-se ordenados crescentemente.
 #include <stdio.h>
 #include <stdlib.h>
 
-int numerosOrdenados(const char *nomeArquivo)
+int numerosOrdenados(char nomeArquivo[50])
 {
     FILE *arquivo = fopen(nomeArquivo, "r");
     if (arquivo == NULL)
     {
-        printf("Erro ao abrir o arquivo.\n");
+        printf("Erro ao abrir o arquivo %s.\n", nomeArquivo);
         return -1;
     }
 
@@ -28,18 +28,18 @@ int numerosOrdenados(const char *nomeArquivo)
         if (atual < anterior)
         {
             fclose(arquivo);
-            return 0;
+            return 0; // Não está ordenado
         }
         anterior = atual;
     }
 
     fclose(arquivo);
-    return 1;
+    return 1; // Está ordenado
 }
 
 int main()
 {
-    const char *nomeArquivo = "numeros.txt";
+    char nomeArquivo[50] = "numeros.txt";
 
     int resultado = numerosOrdenados(nomeArquivo);
 
@@ -58,3 +58,4 @@ int main()
 
     return 0;
 }
+
