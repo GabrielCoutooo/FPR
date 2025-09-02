@@ -8,10 +8,10 @@ decrescentemente e sem repetição
 #define MAX 1000
 
 // Protótipos das funções
-int lerNumeros(const char *nomeArquivo, double numeros[]);
+int lerNumeros(char nomeArquivo[50], double numeros[]);
 void ordenarDecrescente(double numeros[], int n);
 void removerRepetidos(double numeros[], int *n);
-void escreverArquivo(const char *nomeArquivo, double numeros[], int n);
+void escreverArquivo(char nomeArquivo[50], double numeros[], int n);
 
 int main()
 {
@@ -31,7 +31,7 @@ int main()
 }
 
 // Implementação das funções
-int lerNumeros(const char *nomeArquivo, double numeros[])
+int lerNumeros(char nomeArquivo[50], double numeros[])
 {
     FILE *arquivo = fopen(nomeArquivo, "r");
     if (!arquivo)
@@ -82,7 +82,8 @@ void removerRepetidos(double numeros[], int *n)
     }
     *n = j + 1;
 }
-void escreverArquivo(const char *nomeArquivo, double numeros[], int n)
+
+void escreverArquivo(char nomeArquivo[50], double numeros[], int n)
 {
     FILE *arquivo = fopen(nomeArquivo, "w");
     if (!arquivo)
@@ -98,3 +99,4 @@ void escreverArquivo(const char *nomeArquivo, double numeros[], int n)
 
     fclose(arquivo);
 }
+
